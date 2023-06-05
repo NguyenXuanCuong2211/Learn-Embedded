@@ -4,7 +4,7 @@
  * Date:24/05/2023
  * Description: Make a class SinhVien with properties: ID, name, sex, age, math scores, physical scores, chemistry scores,
  *  average scores, academic achievement. Make a class Menu with functions: 1.Them sinh vien, 2. Cap nhat thong tin sinh vien boi ID,
- * 3. Xoa sinh vien boi ID", 4. Tim kiem sinh vien theo ten", 5. Sap xep sinh vien theo diem trung binh GPA"<<endl
+ * 3. Xoa sinh vien boi ID", 4. Tim kiem sinh vien theo ten", 5. Sap xep sinh vien theo diem trung binh GPA"
  * 6. Sap xep sinh vien theo ten", 7. Hien thi danh sach sinh vien".
  */
 #include<stdio.h>
@@ -132,24 +132,56 @@ void SinhVien::setGioiTinh(TypeGioiTinh gioitinh){
 TypeGioiTinh SinhVien::getGioiTinh(){
     return this->gioiTinh;
 }
+/*
+ * Function: setTuoi
+ * Description: A method of class SinhVien
+ * Input:
+ *    age of student
+ * Output:
+ *    None
+*/
 void SinhVien::setTuoi(int tuoi){
     this->tuoi=tuoi;
 }
 int SinhVien::getTuoi(){
     return this->tuoi;
 }
+/*
+ * Function: setDiemToan
+ * Description: A method of class SinhVien
+ * Input:
+ *    math scores of student
+ * Output:
+ *    None
+*/
 void SinhVien::setDiemToan(float diemtoan){
     this->diemToan=diemtoan;
 }
 float SinhVien::getDiemToan(){
     return this->diemToan;
 }
+/*
+ * Function: setDiemLy
+ * Description: A method of class SinhVien
+ * Input:
+ *    phisical scores of student
+ * Output:
+ *    None
+*/
 void SinhVien::setDiemLy(float diemly){
     this->diemLy=diemly;
 }
 float SinhVien::getDiemLy(){
     return this->diemLy;
 }
+/*
+ * Function: setDiemHoa
+ * Description: A method of class SinhVien
+ * Input:
+ *    chemistry scores of student
+ * Output:
+ *    None
+*/
 void SinhVien::setDiemHoa(float diemhoa){
     this->diemHoa=diemhoa;
 }
@@ -160,6 +192,14 @@ float SinhVien::getDiemTrungBinh(){
     diemTB= (diemHoa+diemToan+diemLy)/3;
     return diemTB;
 }
+/*
+ * Function: getHocLuc
+ * Description: A method of class SinhVien
+ * Input:
+ *    None
+ * Output:
+ *    academic achievement of student
+*/
 TypeHocLuc SinhVien::getHocLuc(){
     if(this->diemTB>=8){
         this->hocLuc=GIOI;
@@ -179,7 +219,16 @@ TypeHocLuc SinhVien::getHocLuc(){
     }
     return ERROR;
 }
-
+/*
+ * Function: class Menu
+ * Description: Make a class Menu with functions: 1.Them sinh vien, 2. Cap nhat thong tin sinh vien boi ID,
+ * 3. Xoa sinh vien boi ID", 4. Tim kiem sinh vien theo ten", 5. Sap xep sinh vien theo diem trung binh GPA"
+ * 6. Sap xep sinh vien theo ten", 7. Hien thi danh sach sinh vien".
+ * Input:
+ *    None
+ * Output:
+ *    None
+*/
 class Menu{
     private:
         vector <SinhVien> Database;
@@ -193,6 +242,14 @@ class Menu{
         void sapXepSinhVienTheoTen();
         void hienThiDanhSach();
 };
+/*
+ * Function: Menu
+ * Description: A constructor of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    go to method of Menu class to perform
+*/
 Menu::Menu()
 {
     int phim=0;
@@ -297,6 +354,14 @@ Menu::Menu()
             if(phim==2) goto lua_chon; 
     }
 }
+/*
+ * Function: sapXepSinhVienTheoTen
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    sort student by name
+*/
 void Menu::sapXepSinhVienTheoTen(){
     for(int i=0;i<this->Database.size();i++)
     {
@@ -309,6 +374,14 @@ void Menu::sapXepSinhVienTheoTen(){
         }
     }
 }
+/*
+ * Function: sapXepSinhVienTheoGPA
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    sort student by GPA score
+*/
 void Menu::sapXepSinhVienTheoGPA(){
     for(int i=0;i<this->Database.size();i++)
     {
@@ -321,6 +394,14 @@ void Menu::sapXepSinhVienTheoGPA(){
         }
     }
 }
+/*
+ * Function: timSinhVienTheoTen
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    find student by name
+*/
 void Menu::timSinhVienTheoTen(){
     string ten;
     cout<<"Nhap ten sinh vien can tim kiem"<<endl;
@@ -336,6 +417,14 @@ void Menu::timSinhVienTheoTen(){
         break;
 }
 }
+/*
+ * Function: themSinhVien
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    add student
+*/
 void Menu::themSinhVien(){
     cout<<"Thong tin sinh vien"<<endl;
     string ten;
@@ -363,6 +452,14 @@ void Menu::themSinhVien(){
     SinhVien sv(ten, gioiTinh, tuoi, diemToan, diemLy, diemHoa);
     Menu::Database.push_back(sv);
 }
+/*
+ * Function: capNhatThongTinBoiID
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    update information of student by ID
+*/
 void Menu::capNhatThongTinBoiID(){
     int id;
     cout<<"Nhap ID cua sinh vien can cap nhat thong tin"<<endl;
@@ -403,6 +500,14 @@ void Menu::capNhatThongTinBoiID(){
     }  
     } 
 }
+/*
+ * Function: xoaSinhVienBoiID
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    erase student by ID
+*/
 void Menu::xoaSinhVienBoiID(){
     int idXoa;
     cout<<"Nhap id sinh vien can xoa thong tin: "<<endl;
@@ -411,6 +516,14 @@ void Menu::xoaSinhVienBoiID(){
         if(sv.getID()==idXoa) Menu::Database.erase(Database.begin()+idXoa-1);
 }
 }
+/*
+ * Function: hienThiDanhSach
+ * Description: A method of class Menu
+ * Input:
+ *    None
+ * Output:
+ *    Show the list of student
+*/
 void Menu::hienThiDanhSach()
 {
     
